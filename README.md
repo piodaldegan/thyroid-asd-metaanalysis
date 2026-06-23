@@ -52,7 +52,7 @@ install.packages(c("ggplot2", "patchwork", "dplyr"))
 Clone the repository and run each script from its root directory. No additional data files are needed — all inputs (study-level estimates, pooled results, risk-of-bias judgements) are embedded in the scripts.
 
 ```bash
-git clone https://github.com/<your-username>/<repo-name>.git
+git clone https://github.com/piodaldegan/thyroid-asd-metaanalysis.git
 cd <repo-name>
 Rscript Figure1_PRISMA_FlowDiagram.R
 Rscript Figure2_Forest_Plots_JAMA.R
