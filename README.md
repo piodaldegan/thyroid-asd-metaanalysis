@@ -2,7 +2,7 @@
 
 **Manuscript:** The Impact of Maternal Thyroid Dysfunction on Autism Risk in Offspring: A Systematic Review and Meta-analysis  
 **Journal:** JAMA Psychiatry (under review)  
-**Authors:** Vitor Pio Daldegan, Ana Carolina Gomes Pereira, Patrícia Borges Botelho, Lício A. Velloso  
+**Authors:** Vitor Pio Daldegan, Ana Carolina Gomes Pereira, Patrícia Borges Botelho, Lício Augusto Velloso  
 **PROSPERO registration:** CRD420261290024
 
 ---
