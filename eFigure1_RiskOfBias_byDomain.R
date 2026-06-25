@@ -79,19 +79,14 @@ band_df<-do.call(rbind,lapply(names(bands),function(g) data.frame(grp=g,
             ymin=yof(bands[[g]]["bot"]), ymax=yof(bands[[g]]["top"]))))
 gh_df<-do.call(rbind,lapply(gh,function(e) data.frame(grp=e$grp,y=yof(e$ord),lab=grp_lab[e$grp])))
 
-# ---- RoB 2 (Hales) ---------------------------------------------------------
-rob2 <- data.frame(code=c("R1","R2","R3","R4","R5","Ov"),
-                   x=as.numeric(c(xcol["D1"],xcol["D2"],xcol["D3"],xcol["D4"],xcol["D5"],xcol["Ov"])),
-                   lvl=c("Some concerns","Low","High","High","Some concerns","High"),
-                   stringsAsFactors=FALSE)
-rob2$fill<-col_lvl[rob2$lvl]; rob2$gly<-gly_lvl[rob2$lvl]; rob2$gcol<-gcol_lvl[rob2$lvl]
-rob2$ov<-rob2$code=="Ov"
-rob2_hdr <- c(R1="Randomization",R2="Deviations",R3="Missing outcome data",
-              R4="Outcome measurement",R5="Reported result",Ov="Overall")
-y_r2title <- -2.7; y_r2hdr <- -5.0; y_r2row <- -6.4
+# ---- RoB 2 / Hales panel removed -------------------------------------------
+# The single randomized trial (Hales 2020, CATS II) was excluded at full text:
+# offspring outcome ascertained by the Social Communication Questionnaire
+# (screening), not clinically diagnosed ASD. All 14 included studies are
+# observational and assessed with ROBINS-E (matrix above).
 
 # ---- legenda ---------------------------------------------------------------
-leg_y <- -8.8
+leg_y <- -3.0
 leg <- data.frame(lvl=names(col_lvl), x=c(40,52,66,80))
 leg$fill<-col_lvl[leg$lvl]; leg$gly<-gly_lvl[leg$lvl]; leg$gcol<-gcol_lvl[leg$lvl]
 leg_txt<-c(Low="Low risk","Some concerns"="Some concerns",High="High risk","Very high"="Very high risk")
@@ -125,22 +120,10 @@ p <- ggplot() +
   geom_text(data=cells, aes(x=x,y=y,label=gly), color=cells$gcol,
             family=FONT, fontface="bold", size=3.2) +
 
-  # ----- painel RoB 2 -----
-  annotate("segment", x=0.2, xend=99.8, y=-1.5, yend=-1.5, color=bdr, linewidth=0.4) +
-  annotate("text", x=labx, y=y_r2title, hjust=0, family=FONT, fontface="bold",
-           size=2.75, color=ink, label="Randomized trial \u2014 assessed with RoB 2") +
-  annotate("text", x=as.numeric(xcol[c("D1","D2","D3","D4","D5","Ov")]), y=y_r2hdr+0.2,
-           label=rob2_hdr, angle=35, hjust=0, vjust=0, family=FONT, size=2.35, color=ink) +
-  annotate("text", x=lab_right, y=y_r2row, label="Hales et al, 2020 (RCT)",
-           hjust=1, family=FONT, size=2.6, color=ink) +
-  geom_point(data=rob2, aes(x=x,y=y_r2row), shape=21, fill=rob2$fill,
-             color=ifelse(rob2$ov,"#2b3640","white"),
-             size=ifelse(rob2$ov,PT+0.6,PT), stroke=ifelse(rob2$ov,0.9,0.5)) +
-  geom_text(data=rob2, aes(x=x,y=y_r2row,label=gly), color=rob2$gcol,
-            family=FONT, fontface="bold", size=3.2) +
+  # ----- separador (matriz / legenda) -----
+  annotate("segment", x=0.2, xend=99.8, y=-1.0, yend=-1.0, color=bdr, linewidth=0.4) +
 
   # ----- legenda -----
-  annotate("segment", x=0.2, xend=99.8, y=leg_y+2.0, yend=leg_y+2.0, color=bdr, linewidth=0.4) +
   annotate("text", x=labx, y=leg_y+0.9, hjust=0, family=FONT, fontface="bold",
            size=2.6, color=ink, label="Risk-of-bias judgement") +
   geom_point(data=leg, aes(x=x,y=leg_y-0.4), shape=21, fill=leg$fill, color="white", size=PT, stroke=0.5) +
@@ -152,7 +135,7 @@ p <- ggplot() +
   coord_cartesian(clip="off") +
   labs(title="Risk-of-bias assessment of included studies, grouped by maternal thyroid exposure domain",
        caption=paste0(
-       "Observational studies assessed with ROBINS-E; the randomized trial with RoB 2 (domain definitions differ between tools and are labelled separately). Studies informing more than one exposure domain appear once, under their primary domain. ",
+       "All included studies were observational and assessed with ROBINS-E. Studies informing more than one exposure domain appear once, under their primary domain. ",
        "Judgements are the\nconsensus of two independent reviewers after adjudication. ROBINS-E domains: 1, confounding; 2, measurement of the exposure; 3, selection of participants; ",
        "4, post-\nexposure interventions; 5, missing data; 6, measurement of the outcome; 7, selection of the reported result. Groups A\u2013E met eligibility and informed ",
        "synthesis (A\u2013B pooled or triangulated;\nC\u2013E narrative); group F met eligibility but was excluded from all synthesis for high or very high risk of bias.")) +
@@ -162,6 +145,6 @@ p <- ggplot() +
         plot.caption=element_text(size=6.6, color=slate, hjust=0, lineheight=1.35, margin=margin(t=12)),
         plot.margin=margin(12,14,8,12))
 
-ggsave("eFigure1_RiskOfBias_byDomain.png", p, width=11, height=9.4, dpi=600, bg="white")  # 600 dpi raster (JAMA min. 350)
-ggsave("eFigure1_RiskOfBias_byDomain.pdf", p, width=11, height=9.4, device=cairo_pdf, bg="white")  # vector: preferred for line art
+ggsave("eFigure1_RiskOfBias_byDomain.png", p, width=11, height=8.0, dpi=600, bg="white")  # 600 dpi raster (JAMA min. 350)
+ggsave("eFigure1_RiskOfBias_byDomain.pdf", p, width=11, height=8.0, device=cairo_pdf, bg="white")  # vector: preferred for line art
 cat("rob ok\n")
