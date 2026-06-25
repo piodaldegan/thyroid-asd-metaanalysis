@@ -53,7 +53,7 @@ Clone the repository and run each script from its root directory. No additional 
 
 ```bash
 git clone https://github.com/piodaldegan/thyroid-asd-metaanalysis.git
-cd <repo-name>
+cd thyroid-asd-metaanalysis
 Rscript Figure1_PRISMA_FlowDiagram.R
 Rscript Figure2_Forest_Plots_JAMA.R
 Rscript Figure3_QBA_Distributions_JAMA.R
@@ -86,7 +86,7 @@ QBA-adjusted probability that the effect exceeds the null (primary prior: famili
 
 ## Use of AI Tools
 
-R code in this repository was drafted with assistance from Claude (Anthropic), under the direction of and with iterative review by the authors, as described in eAppendix 4 of the Supplementary Online Content. All code was executed, verified against extracted study data, and edited by the authors, who take responsibility for its integrity.
+R code in this repository was drafted with assistance from Claude Opus 4.8 (Anthropic), under the direction of and with iterative review by the authors, as described in eAppendix 4 of the Supplementary Online Content. All code was executed, verified against extracted study data, and edited by the authors, who take responsibility for its integrity.
 
 ---
 
