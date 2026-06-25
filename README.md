@@ -2,7 +2,7 @@
 
 **Manuscript:** The Impact of Maternal Thyroid Dysfunction on Autism Risk in Offspring: A Systematic Review and Meta-analysis  
 **Journal:** JAMA Psychiatry (under review)  
-**Authors:** Vitor Pio Daldegan, Ana Carolina Gomes Pereira, Patrícia Borges Botelho, Lício Augusto Velloso  
+**Authors:** Vitor Pio Daldegan, Ana Carolina Gomes Pereira, Patrícia Borges Botelho, Lício A. Velloso  
 **PROSPERO registration:** CRD420261290024
 
 ---
@@ -20,7 +20,7 @@ This repository contains the annotated R code used to produce all figures in the
 | `Figure1_PRISMA_FlowDiagram.R` | Figure 1 | PRISMA 2020 flow diagram of study selection |
 | `Figure2_Forest_Plots_JAMA.R` | Figure 2 | Two-panel forest plot (maternal hypothyroidism / hyperthyroidism vs offspring ASD) |
 | `Figure3_QBA_Distributions_JAMA.R` | Figure 3 | Probabilistic quantitative bias analysis (QBA) density panels |
-| `eFigure1_RiskOfBias_byDomain.R` | eFigure 1 (Supplement) | ROBINS-E and Cochrane RoB 2 traffic-light risk-of-bias figure |
+| `eFigure1_RiskOfBias_byDomain.R` | eFigure 1 (Supplement) | ROBINS-E traffic-light risk-of-bias figure (all included studies are observational) |
 
 Each script saves both a **vector PDF** (`cairo_pdf` device, preferred for publication) and a **600 dpi PNG** (JAMA minimum 350 dpi) to the working directory.
 
