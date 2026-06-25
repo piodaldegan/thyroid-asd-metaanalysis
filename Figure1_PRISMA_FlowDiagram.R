@@ -1,7 +1,7 @@
 # Figure 1 — PRISMA 2020 flow diagram
 # Matches the navy figure family of the manuscript (cf. Figure2_Forest_Plots_JAMA.R).
 # Counts reconciled to the Rayyan screening record (primary source):
-#   371 identified -> 59 duplicates -> 312 screened -> 297 excluded -> 15 included (12 in synthesis).
+#   371 identified -> 59 duplicates -> 312 screened -> 297 excluded -> 15 included in review and synthesis.
 # Square-cornered boxes follow the canonical PRISMA layout. To round the corners,
 # add library(ggchicklet) and swap geom_rect() for geom_rrect().
 
@@ -13,12 +13,12 @@ FONT <- "sans"
 
 ## ---- box geometry on a 0-100 x 0-100 canvas ----
 rects <- data.frame(
-  id   = c("idn","dup","scr","exc","inc","ex3","syn"),
-  cx   = c(36,   80,   36,   80,   36,   80,   36),
-  cy   = c(90,   90,   58,   58,   23.5, 23.5, 7),
-  w    = c(40,   34,   40,   38,   40,   38,   40),
-  h    = c(11,   9,    11,   25,   12,   17,   10),
-  fill = c("white","white","white",excl_fill,"white",excl_fill,"white"),
+  id   = c("idn","dup","scr","exc","inc"),
+  cx   = c(36,   80,   36,   80,   36),
+  cy   = c(90,   90,   58,   58,   17),
+  w    = c(40,   34,   40,   38,   46),
+  h    = c(11,   9,    11,   25,   13),
+  fill = c("white","white","white",excl_fill,"white"),
   stringsAsFactors = FALSE
 )
 rects$xmin <- rects$cx - rects$w/2; rects$xmax <- rects$cx + rects$w/2
@@ -52,8 +52,7 @@ add_centered <- function(p, r, title, body, ts = 3.5, bs = 3.2) {
 p <- add_centered(p, g("idn"), "Records identified from databases", "(n = 371)")
 p <- add_centered(p, g("dup"), "Duplicate records removed", "before screening (n = 59)", ts = 3.3, bs = 3.1)
 p <- add_centered(p, g("scr"), "Records screened", "(n = 312)")
-p <- add_centered(p, g("inc"), "Studies included in", "systematic review (n = 15)")
-p <- add_centered(p, g("syn"), "Studies in quantitative and", "narrative synthesis (n = 12)")
+p <- add_centered(p, g("inc"), "Studies included in review and", "synthesis (n = 15)")
 
 ## ---- exclusion boxes (centered bold header + left-aligned body) ----
 exc <- g("exc")
@@ -69,17 +68,6 @@ p <- p +
                          "gestational window   n = 11", sep = "\n"),
            color = ink, size = 3.1, family = FONT, lineheight = 1.25)
 
-ex3 <- g("ex3")
-p <- p +
-  annotate("text", x = ex3$cx, y = ex3$ymax - 3, label = "Included studies excluded from",
-           fontface = "bold", color = navy, size = 3.2, family = FONT) +
-  annotate("text", x = ex3$xmin + 2.5, y = ex3$ymax - 6.0, hjust = 0, vjust = 1,
-           label = paste("quantitative synthesis for high or",
-                         "very high risk of bias (n = 3):",
-                         "George 2014; Qutranji 2021;",
-                         "Hankus et al, 2020", sep = "\n"),
-           color = ink, size = 3.05, family = FONT, lineheight = 1.3)
-
 ## ---- arrows ----
 ar  <- arrow(length = unit(0.18, "cm"), type = "closed")
 seg <- function(p, x, xe, y, ye)
@@ -87,12 +75,10 @@ seg <- function(p, x, xe, y, ye)
                arrow = ar, color = gray, linewidth = 0.55)
 # vertical (down the main column)
 p <- seg(p, 36, 36, 84.5, 63.6)   # identified  -> screened
-p <- seg(p, 36, 36, 52.5, 29.6)   # screened    -> included
-p <- seg(p, 36, 36, 17.5, 12.1)   # included    -> synthesis
+p <- seg(p, 36, 36, 52.5, 23.7)   # screened    -> included
 # horizontal (out to the exclusion boxes)
 p <- seg(p, 56, 62.5, 90, 90)     # identified  -> duplicates removed
 p <- seg(p, 56, 60.5, 58, 58)     # screened    -> records excluded
-p <- seg(p, 56, 60.5, 23.5, 23.5) # included    -> excluded from synthesis
 
 p <- p +
   coord_cartesian(xlim = c(0, 100), ylim = c(-2, 100), clip = "off") +
