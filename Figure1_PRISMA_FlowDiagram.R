@@ -1,7 +1,10 @@
 # Figure 1 — PRISMA 2020 flow diagram
 # Matches the navy figure family of the manuscript (cf. Figure2_Forest_Plots_JAMA.R).
-# Counts reconciled to the Rayyan screening record (primary source):
-#   371 identified -> 59 duplicates -> 312 screened -> 297 excluded -> 15 included in review and synthesis.
+# Counts reconciled to the screening record (primary source):
+#   371 identified -> 59 duplicates -> 312 screened -> 298 excluded -> 14 included.
+#   (Hales 2020 excluded at full text: outcome ascertained by a screening instrument
+#    [Social Communication Questionnaire], not clinically diagnosed ASD — same outcome
+#    criterion that excluded Teng 2022.)
 # Square-cornered boxes follow the canonical PRISMA layout. To round the corners,
 # add library(ggchicklet) and swap geom_rect() for geom_rrect().
 
@@ -52,16 +55,16 @@ add_centered <- function(p, r, title, body, ts = 3.5, bs = 3.2) {
 p <- add_centered(p, g("idn"), "Records identified from databases", "(n = 371)")
 p <- add_centered(p, g("dup"), "Duplicate records removed", "before screening (n = 59)", ts = 3.3, bs = 3.1)
 p <- add_centered(p, g("scr"), "Records screened", "(n = 312)")
-p <- add_centered(p, g("inc"), "Studies included in review and", "synthesis (n = 15)")
+p <- add_centered(p, g("inc"), "Studies included in review and", "synthesis (n = 14)")
 
-## ---- exclusion boxes (centered bold header + left-aligned body) ----
+## ---- exclusion box (centered bold header + left-aligned body) ----
 exc <- g("exc")
 p <- p +
-  annotate("text", x = exc$cx, y = exc$ymax - 3, label = "Records excluded (n = 297)",
+  annotate("text", x = exc$cx, y = exc$ymax - 3, label = "Records excluded (n = 298)",
            fontface = "bold", color = navy, size = 3.4, family = FONT) +
   annotate("text", x = exc$xmin + 2.5, y = exc$ymax - 6.5, hjust = 0, vjust = 1,
            label = paste("Non-eligible study designs   n = 138",
-                         "Inadequate outcome   n = 71",
+                         "Inadequate outcome   n = 72",
                          "Non-eligible exposures   n = 49",
                          "Non-human population   n = 28",
                          "Exposure outside the",
