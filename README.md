@@ -1,7 +1,7 @@
 # Analysis Code — Maternal Thyroid Dysfunction and Offspring ASD
 
 **Manuscript:** The Impact of Maternal Thyroid Dysfunction on Autism Risk in Offspring: A Systematic Review and Meta-analysis  
-**Journal:** JAMA Psychiatry (under review)  
+**Journal:** Translational Psychiatry (under review)  
 **Authors:** Vitor Pio Daldegan, Ana Carolina Gomes Pereira, Patrícia Borges Botelho, Lício A. Velloso  
 **PROSPERO registration:** CRD420261290024
 
@@ -100,6 +100,6 @@ This code is shared under the [MIT License](LICENSE). The underlying study data 
 
 If you use this code, please cite the manuscript:
 
-> Daldegan VP, Gomes Pereira AC, Borges Botelho P, Velloso LA. The Impact of Maternal Thyroid Dysfunction on Autism Risk in Offspring: A Systematic Review and Meta-analysis. *JAMA Psychiatry*. [In review]
+> Daldegan VP, Gomes Pereira AC, Borges Botelho P, Velloso LA. The Impact of Maternal Thyroid Dysfunction on Autism Risk in Offspring: A Systematic Review and Meta-analysis. *Translational Psychiatry*. [Under review]
 
 A citable DOI for this repository will be available via Zenodo upon publication.
